@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoList from './components/TodoList';
+import './components/Todo.css';
 
 const todoTasks = [
   {
@@ -26,11 +27,26 @@ class App extends React.Component {
     }
   }
 
+  toggleCompleted = (clickedTaskId) => {
+    this.setState({
+      todoTasks: this.state.todoTasks.map((task) =>{
+        if (task.id === clickedTaskId){
+          return {
+            ...task, completed:!task.completed
+          }
+        }
+        else {
+          return task;
+        }
+      })
+    })
+  }
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList />
+        <TodoList todoTasks = {this.state.todoTasks} toggleCompleted = {this.toggleCompleted}/>
       </div>
     );
   }
