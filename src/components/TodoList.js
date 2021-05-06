@@ -9,7 +9,7 @@ class TodoList extends React.Component {
     render() {
         return(
             <div>
-                <h2>TodoList is here!</h2>
+                <h2> Your tasks for the day: </h2>
                 {
                     this.props.todoTasks.map((task) => {
                         return <Todo 
